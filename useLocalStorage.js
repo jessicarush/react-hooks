@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 /**
  * useLocalStorage.js
@@ -12,17 +12,16 @@ import { useState, useEffect, useRef } from 'react';
  * @returns {Array} containing state and function for updating state
  */
 function useLocalStorage(key, defaultValue) {
-  const itemKey = useRef(key);
   const [state, setState] = useState(() => {
     // Check if anything exists in localStorage, if not, use defaultValue
-    let value = window.localStorage.getItem(itemKey);
+    let value = window.localStorage.getItem(key);
     return value ? JSON.parse(value) : defaultValue;
   });
 
   // update localStorage when state changes
   useEffect(() => {
-    window.localStorage.setItem(itemKey, JSON.stringify(state));
-  }, [state]);
+    window.localStorage.setItem(key, JSON.stringify(state));
+  }, [state, key]);
   // return state value and a function to update it
   return [state, setState];
 }
