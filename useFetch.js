@@ -13,7 +13,7 @@ import { useState, useEffect } from "react";
  *   const results = useFetch(`${url}?${params}`);
  *
  *   return (
- *     <p>{Object.values(results)[0]}</p>
+ *     <p>{ results ? Object.values(results)[0] : ''}</p>
  *  );
  * }
  *
