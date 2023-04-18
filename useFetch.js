@@ -18,7 +18,7 @@ import { useState, useEffect } from "react";
  * }
  *
  * @param {string} url the url of the API
- * @returns {json} containing repsonse or null if no response
+ * @returns {json} containing response or null if no response
  */
 function useFetch(url) {
   const [data, setData] = useState(null);
