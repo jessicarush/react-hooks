@@ -14,7 +14,10 @@ import { useState, useEffect } from 'react';
 function useLocalStorage(key, defaultValue) {
   const [state, setState] = useState(() => {
     // Check if anything exists in localStorage, if not, use defaultValue
-    let value = window.localStorage.getItem(key);
+    let value;
+    if (typeof window !== "undefined") {
+      value = window.localStorage.getItem(key);
+    }
     return value ? JSON.parse(value) : defaultValue;
   });
 
